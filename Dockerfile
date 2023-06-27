@@ -1,6 +1,6 @@
-FROM frolvlad/alpine-glibc:alpine-3.11
+FROM frolvlad/alpine-glibc:alpine-3.17
 
-ARG nim_version=1.6.6
+ARG nim_version=1.6.14
 
 ENV CFLAGS="-fPIC -O3"
 
@@ -12,10 +12,10 @@ RUN apk add \
     curl llvm-dev curl-static bash curl-dev \
     clang-static nghttp2-static zlib-static
 
-# RUN curl -O http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz \
-#  && tar zxvf autoconf-2.69.tar.gz \
-#  && cd autoconf-2.69 \
-#  && ./configure && make && make install
+RUN curl -O http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz \
+ && tar zxvf autoconf-2.69.tar.gz \
+ && cd autoconf-2.69 \
+ && ./configure && make && make install
 
 ENV PATH=/usr/local/bin:$PATH
 
