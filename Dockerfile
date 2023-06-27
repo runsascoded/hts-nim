@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-glibc:alpine-3.17
+FROM frolvlad/alpine-glibc:alpine-3.11
 
 ARG nim_version=1.6.6
 
@@ -9,14 +9,13 @@ RUN apk add \
     m4 autoconf tar xz-dev bzip2-dev build-base \
     libpthread-stubs libzip-dev gfortran \
     openssl-libs-static openblas-static pcre-dev \
-    openssl1.1-compat \
     curl llvm-dev curl-static bash curl-dev \
     clang-static nghttp2-static zlib-static
 
-RUN curl -O http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz \
- && tar zxvf autoconf-2.69.tar.gz \
- && cd autoconf-2.69 \
- && ./configure && make && make install
+# RUN curl -O http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz \
+#  && tar zxvf autoconf-2.69.tar.gz \
+#  && cd autoconf-2.69 \
+#  && ./configure && make && make install
 
 ENV PATH=/usr/local/bin:$PATH
 
